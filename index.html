@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curso de Edição de Vídeos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: texto;
+      src: url(Gotham-Book.otf);
+    }
+    @font-face {
+      font-family: titulo;
+      src: url(GOTHAM-BLACK.TTF);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'texto', sans-serif;
+    }
+
+    body {
+      background-image: url(1\ -\ Fundo.png);
+      color: #fff;
+      line-height: 1.6;
+      
+    }
+
+    header {
+      text-align: center;
+      margin: 100px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0; /* remove padding */
+      margin: 0;
+      overflow: hidden;
+      width: 100vw;
+    }
+      
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 0;
+      margin: 0;
+      max-width: none;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding-left: 5vw;
+      color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2vw;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 2vw;
+    }
+
+    .hero-text p {
+      font-size: 1.2vw;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 2.5vw;
+    }
+
+    header h1 {
+      font-family: 'titulo';
+      text-transform: uppercase;
+      color: #fff;
+      padding-top: 4rem;
+    }
+
+    .highlight {
+      font-family: 'titulo';
+      background: linear-gradient(to right, #00e6e6, #ffe600, #ff6666);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, rgb(250, 233, 1), rgb(255, 115, 0));
+      color: #fff;
+      padding: 10px;
+      width: 500px;
+      text-align: center;
+      font-size: xx-large;
+      font-family: 'titulo';
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      scale: 1.1;
+      background: linear-gradient(to right, rgb(212, 199, 4), rgb(197, 91, 5));
+    }
+
+    .subtitle{
+      display: block;
+    font-size: 1vw;
+    margin-top: 0.5vw;
+    }
+
+/* Tablets (entre 768px e 1024px) */
+@media (max-width: 1024px) {
+  header {
+    flex-direction: column;
+    padding: 40px 5%;
+    text-align: center;
+  }
+
+  .hero-text, .hero-image {
+    max-width: 100%;
+  }
+
+  .hero-text h1 {
+    font-size: 6vw;
+  }
+
+  .hero-text p {
+    font-size: 2.5vw;
+  }
+
+  .cta-btn {
+    font-size: 3vw;
+    padding: 12px 25px;
+  }
+
+  .access-info {
+    font-size: 2vw;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+}
+
+
+/* Celulares (até 767px) */
+@media (max-width: 767px) {
+  header {
+    padding: 30px 5%;
+  }
+  
+  .hero-text h1 {
+    font-size: 7vw;
+  }
+
+  .hero-text p {
+    font-size: 4vw;
+  }
+
+  .cta-btn {
+    font-size: 4.5vw;
+    padding: 12px 20px;
+  }
+
+  .access-info {
+    font-size: 3vw;
+  }
+}
+
+    h2 {
+      font-size: 3.5vw;
+      margin-bottom: 4rem;
+    }
+
+    /* AQUI ESTÁ O AJUSTE PRINCIPAL */
+    .cards-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 5%;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.4); /* fundo escuro com transparência */
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px 25px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .text-card {
+      font-family: 'texto';
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: left;
+      margin-left: 34px;
+    }
+
+    .card h3 {
+      color: #ffffff;
+      font-size: 22px;
+      margin-bottom: 12px;
+      font-family: 'titulo';
+      font-weight: 700;
+    }
+
+    .card-img {
+  position: absolute;
+  bottom: -50px;   /* para sair um pouco do card */
+  right: -30px;    /* metade fora na direita */
+  width: 60px;
+  height: 60px;
+}
+
+.card-img img {
+  width: 30%;
+  height: 30%;
+  object-fit: contain;
+}
+
+.card {
+  position: relative; /* Importante para posicionar o número */
+  background: rgba(28, 28, 28, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #444;
+}
+
+.card-number {
+  position: absolute;
+  top: -16px; /* Metade fora */
+  left: -16px; /* Metade fora */
+  background-color: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.historico {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 150px;
+}
+
+.img2 {
+  flex: 1;
+}
+
+.textos {
+  flex: 1;
+  max-width: 550px;
+  margin-right: 500px;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.mentor {
+  font-weight: 800;
+  font-size: 45px;
+}
+
+@media (max-width: 768px) {
+  .historico {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .textos {
+    font-size: 16px;
+    padding: 0 10px;
+    max-width: 550px;
+    font-size: 25px;
+    line-height: 1.2;
+  }
+
+  .mentor {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 25px 20px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .card span {
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+    .price {
+      font-size: 6rem;
+      font-weight: bold;
+      color: #00ff84;
+      font-weight: 900;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+      color: #e52541;
+      font-weight: 900;
+    }
+    .fim{
+      font-size: 4rem;
+      font-weight: 900;
+    }
+
+    .bonus {
+     
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      
+    }
+    .bonus ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bonus li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.bonus .icon img {
+  width: 24px; /* ajuste conforme necessário */
+  height: 24px;
+}
+
+    .limited-offer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    .sozinho{
+      margin-top: 70px;
+      margin-bottom: 70px;
+      font-size: 2rem;
+    }
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* espaço entre imagem e texto */
+    }
+
+
+    .full-centered-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 380px;
+}
+
+
+.full-centered-section .content-wrapper {
+  max-width: 700px;
+  width: 100%;
+}
+
+.content-section {
+  padding: 80px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.content-section div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.content-section div p {
+  position: relative;
+  margin: 0;
+  padding-left: 16px;
+  font-family: 'texto', sans-serif;
+  font-size: 45px;
+  line-height: 1.5;
+  color: white;
+}
+
+.content-section div p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #ffffff;
+  opacity: 0.2;
+}
+
+.content-section > div:nth-child(odd) {
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.content-section > div:nth-child(even) {
+  justify-content: flex-end;
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.content-section > div:nth-child(even) p {
+  padding-left: 0;
+  padding-right: 16px;
+  text-align: right;
+}
+
+.content-section > div:nth-child(even) p::before {
+  left: auto;
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .content-section > div {
+    flex-direction: row;
+    align-items: flex-start;
+    align-self: center !important;
+    text-align: left;
+  }
+.sozinho{
+  font-size: 1rem;
+}
+.ofertatl{
+  font-size: 2rem;
+}
+.h2card{
+  font-size: 2rem;
+}
+.acessocompleto{
+  font-size: 2rem;
+}
+span{
+  font-size: 3rem;
+}
+  .check-icon {
+    width: 15px;
+    height: 20px;
+  }
+  .content-section > div p {
+    padding-left: 16px;
+    padding-right: 0;
+    font-size: 20px;
+  }
+
+  .content-section > div p::before {
+    left: 0;
+    right: auto;
+  }
+}
+
+
+.curso {
+  font-size: 3.5vw;
+  font-weight: bold;
+  text-align: center;
+  margin: 60px;
+  background: linear-gradient(90deg, #00e6e6, #ffe600, #ff6666, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.check-icon {
+  width: 50px;
+  height: 50px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.titulo-bonus {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+  text-align: center;
+}
+.oferta{
+  font-size: 15px;
+}
+.nav {
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* alinha verticalmente */
+  gap: 2rem;               /* espaçamento entre os itens */
+  list-style: none;
+  padding: 1rem;
+}
+
+.nav li {
+  /* Isso ajuda a garantir que os <li> não quebrem */
+  white-space: nowrap;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.nav a:hover {
+  color: #f39c12;
+}
+
+  </style>
+</head>
+<body>
+  <div class="nav"><!-- Colocar Css do site do Spotify -->
+    <ul>
+      <li><a href="">Inicio</a></li>
+      <li><a href="">Conteudos</a></li>
+      <li><a href="">Valores</a></li>
+    </ul>
+  </div>
+  
+    <header class="hero">
+      <div class="hero-text">
+        <h1>Domine a Edição de <br> Vídeos com Qualidade <br> <span class="highlight">Cinematográfica</span>.</h1>
+        <p class="cinema">Um curso prático no DaVinci Resolve para <br> quem quer liberdade criativa, <br> profissionalismo e oportunidade.</p>
+        <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">QUERO COMEÇAR AGORA!</a>  
+        <p class="subtitle">Acesso vitalício</p>
+      </div>
+      <div class="hero-image">
+        <img src="Site Vini/Vini Capa.png" alt="Edição de vídeo" width="1000px">
+      </div>
+    </header>
+
+  <!-- SEÇÃO DE CARDS CENTRALIZADA -->
+  <section class="cards-section">
+    <h2 class="h2card">Veja o que você aprenderá:</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-number">1</div>
+        <h3>INTRODUÇÃO</h3>
+        <p class="text-card">Como organizar seu  ambiente de trabalho,  entender a lógica do  DaVinci, resolver e  começar a editar com  confiança, mesmo  sendo iniciante.</p>
+        <div class="card-img">
+          <img src="Site Vini/Verificado.png" alt="">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-number">2</div>
+        <h3>FUNDAMENTOS</h3>
+        <p class="text-card">Como cortar, organizar  e estruturar vídeos  com ritmo, intenção e  clareza - criando  sequências que  prendem a atenção do  público.</p>
+        <div class="card-img">
+          <img src="Site Vini/Verificado.png" alt="">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-number">3</div>
+        <h3>AJUSTES</h3>
+        <p class="text-card">Como melhorar o  áudio, aplicar  correções de cor,  ajustar o  enquadramento e  preparar seu vídeo  para ter uma aparência  mais profissional.</p>
+        <div class="card-img">
+          <img src="Site Vini/Verificado.png" alt="">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-number">4</div>
+        <h3>ELEMENTOS</h3>
+        <p class="text-card">Como usar textos,  títulos, legendas  automáticas e efeitos  sonoros de forma  estratégica para deixar  seus vídeos mais  dinâmicos e  envolventes.</p>
+        <div class="card-img">
+          <img src="Site Vini/Verificado.png" alt="">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-number">5</div>
+        <h3>FINALIZAÇÃO</h3>
+        <p class="text-card">Como eportar com  qualidade e leveza,  criar diferentes  formatos (Reels,  YouTube, Stories), e  organizar seus  arquivos como um  editor profissional.</p>
+        <div class="card-img">
+          <img src="Site Vini/Verificado.png" alt="">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-number">6</div>
+        <h3>HACKS</h3>
+        <p class="text-card">Dicas avançadas e  atalhos que  economizam horas na  edição, além de efeitos  simples com cara de  cinema que  surpreendem no  resultado final.</p>
+        <div class="card-img">
+          <img src="Site Vini/Verificado.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="historico">
+    <div class="img2">
+      <img src="Site Vini/Camadas/Vini Celular.png" alt="">
+    </div>
+    <div class="textos">
+      <h1 class="mentor"><strong>Seu mentor nessa jornada</strong></h1>
+      <br>
+      <p>Sou o Vinícius Lazaretti e já estive exatamente onde você está agora: começando do zero, frustrado com programas complicados e sentindo que meus vídeos não tinham impacto.
+        <br>
+        <br>
+        O DaVinci Resolve mudou tudo pra mim — e agora, quero te mostrar como ele pode mudar tudo pra você também.
+        <br>
+        <br>
+        Criei o SkyMaster FX pra ser mais do que um curso: é um atalho.
+        <br>
+        <br>
+        Comigo como seu mentor, você vai aprender na prática, sem enrolação a editar com qualidade e a se destacar, transformando a edição em uma oportunidade real.
+      </p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2 class="curso">Esse curso é para você que...</h2>
+    <div>
+      <img src="Site Vini/Verificado.png" alt="Check verde" class="check-icon">
+      <p>Quer aprender do zero e editar com qualidade profissional, mesmo sem experiência.</p>
+    </div>
+    <div>
+      <img src="Site Vini/Verificado.png" alt="Check verde" class="check-icon">
+      <p>Está cansado de tutoriais soltos e quer um método direto, prático e sem enrolação.</p>
+    </div>
+    <div>
+      <img src="Site Vini/Verificado.png" alt="Check verde" class="check-icon">
+      <p>Sonha em viver de edição, atrair clientes e construir uma carreira no audiovisual.</p>
+    </div>
+  </section>
+
+  <section class="full-centered-section">
+    <div class="content-wrapper">
+      <h2 class="acessocompleto">Acesso Completo de <span class="strikethrough">247,00</span></h2>
+      <h3 class="fim">POR APENAS</h3>
+      <p class="price">147,00</p>
+      <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">Quero Acessar Agora</a>
+      <div class="sozinho">
+        <p class="sozinho2">
+          Você terá acesso vitalício ao curso SkyMaster FX - DaVinci Resolve Essencial, com atualizações, suporte e bônus exclusivos da primeira turma.
+        </p>
+      </div>
+      <div style="background-color: rgba(0, 0, 0, 0.5); color: white;">
+        
+        <div class="bonus">
+          <h1 class="titulo-bonus">Bônus da pré-venda:</h1>
+          <ul>
+            <li>
+              <span class="icon"><img src="Site Vini/Presente.png" alt="Ícone 1"></span>
+              Sorteio de licença oficial do DaVinci Resolve Studio
+            </li>
+            <li>
+              <span class="icon"><img src="Site Vini/Presente.png" alt="Ícone 2"></span>
+              Acesso antecipado à comunidade de alunos
+            </li>
+            <li>
+              <span class="icon"><img src="Site Vini/Presente.png" alt="Ícone 3"></span>
+              Participação nos sorteios de pacotes criativos e mentoria
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="limited-offer">
+        <h2 class="ofertatl">OFERTA POR TEMPO LIMITADO
+          <br>
+          <div class="oferta">
+            Aproveite antes que o valor aumente!
+          </div> 
+        </h2>
+      
+        <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">Quero Começar Agora!</a>
+      </div>
+    </div>
+  </section>
+  
+</body>
+</html>
