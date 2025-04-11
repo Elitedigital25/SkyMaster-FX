@@ -40,7 +40,7 @@
       padding: 0; /* remove padding */
       margin: 0;
       overflow: hidden;
-      width: 100vw;
+      width: 100%;
     }
       
     .hero-image {
@@ -147,6 +147,13 @@
     margin-top: 40px;
   }
 }
+.nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 
 /* Celulares (até 767px) */
@@ -154,7 +161,10 @@
   header {
     padding: 30px 5%;
   }
-  
+  .hero-image img {
+  max-width: 100%;
+  height: auto;
+}
   .hero-text h1 {
     font-size: 7vw;
   }
@@ -171,6 +181,15 @@
   .access-info {
     font-size: 3vw;
   }
+  .btn {
+  width: 100%;
+  max-width: 500px;
+}
+.cards {
+  justify-content: center; /* Alinha os cards ao centro */
+}
+
+
 }
 
     h2 {
@@ -192,9 +211,12 @@
     }
 
     .cards {
-      display: grid;
+      
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      
     }
 
     .card {
@@ -207,8 +229,15 @@
       position: relative;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
+      
     }
+    .card {
+  position: relative; /* Importante para posicionar o número */
+ 
+ 
 
+ 
+}
     .card:hover {
       transform: scale(1.03);
     }
@@ -243,13 +272,7 @@
   object-fit: contain;
 }
 
-.card {
-  position: relative; /* Importante para posicionar o número */
-  background: rgba(28, 28, 28, 0.9);
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid #444;
-}
+
 
 .card-number {
   position: absolute;
@@ -273,8 +296,24 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 150px;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 3rem;
+  flex-direction: row;
 }
 
+.historico .img2 img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 1rem;
+}
+
+.historico .textos {
+  max-width: 600px;
+  text-align: left;
+}
 .img2 {
   flex: 1;
 }
@@ -296,16 +335,27 @@
   .historico {
     flex-direction: column;
     text-align: center;
+    padding: 2rem 1rem;
+    align-items: center;
+  
   }
 
   .textos {
-    font-size: 16px;
+   width: 100%;
     padding: 0 10px;
-    max-width: 550px;
+    max-width: 100%;
     font-size: 25px;
-    line-height: 1.2;
+    text-align: center;
+    
   }
+  
+  .historico .img2 img {
+    width: 90%;
+    height: auto;
+    object-fit: contain;
+    max-width: 400px;
 
+  }
   .mentor {
     font-size: 26px;
   }
@@ -328,6 +378,11 @@
     font-size: 16px;
     width: 30px;
     height: 30px;
+  }
+  .curso {
+    font-size: 10vw !important; /* Aumenta o tamanho da fonte para dispositivos móveis */
+    margin: 30px; /* Ajusta a margem para dar mais espaço */
+    padding: 0 10px; /* Adiciona padding para evitar que o texto fique muito próximo das bordas */
   }
 }
 
@@ -521,7 +576,6 @@ span{
   -webkit-text-fill-color: transparent;
 }
 
-
 .check-icon {
   width: 50px;
   height: 50px;
@@ -534,6 +588,7 @@ span{
   color: #FFD700;
   text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
   text-align: center;
+  margin-bottom: 60px;
 }
 .oferta{
   font-size: 15px;
@@ -551,7 +606,11 @@ span{
   /* Isso ajuda a garantir que os <li> não quebrem */
   white-space: nowrap;
 }
-
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 .nav li a {
   text-decoration: none;
   color: white;
@@ -559,6 +618,7 @@ span{
 }
 .nav a:hover {
   color: #f39c12;
+  transition: 0.5s;
 }
 
   </style>
@@ -583,6 +643,7 @@ span{
         <img src="Site Vini/Vini Capa.png" alt="Edição de vídeo" width="1000px">
       </div>
     </header>
+<main>
 
   <!-- SEÇÃO DE CARDS CENTRALIZADA -->
   <section class="cards-section">
@@ -638,10 +699,10 @@ span{
       </div>
     </div>
   </section>
-
+  
   <section class="historico">
     <div class="img2">
-      <img src="Site Vini/Camadas/Vini Celular.png" alt="">
+      <img src="Site Vini/Vini Celular.png" alt="">
     </div>
     <div class="textos">
       <h1 class="mentor"><strong>Seu mentor nessa jornada</strong></h1>
@@ -659,7 +720,7 @@ span{
       </p>
     </div>
   </section>
-
+  
   <section class="content-section">
     <h2 class="curso">Esse curso é para você que...</h2>
     <div>
@@ -675,7 +736,7 @@ span{
       <p>Sonha em viver de edição, atrair clientes e construir uma carreira no audiovisual.</p>
     </div>
   </section>
-
+  
   <section class="full-centered-section">
     <div class="content-wrapper">
       <h2 class="acessocompleto">Acesso Completo de <span class="strikethrough">247,00</span></h2>
@@ -687,7 +748,7 @@ span{
           Você terá acesso vitalício ao curso SkyMaster FX - DaVinci Resolve Essencial, com atualizações, suporte e bônus exclusivos da primeira turma.
         </p>
       </div>
-      <div style="background-color: rgba(0, 0, 0, 0.5); color: white;">
+     
         
         <div class="bonus">
           <h1 class="titulo-bonus">Bônus da pré-venda:</h1>
@@ -706,7 +767,7 @@ span{
             </li>
           </ul>
         </div>
-      </div>
+      
       <div class="limited-offer">
         <h2 class="ofertatl">OFERTA POR TEMPO LIMITADO
           <br>
@@ -714,11 +775,12 @@ span{
             Aproveite antes que o valor aumente!
           </div> 
         </h2>
-      
+        
         <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">Quero Começar Agora!</a>
       </div>
     </div>
   </section>
   
+</main>
 </body>
 </html>
