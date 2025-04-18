@@ -8,7 +8,7 @@
   <style>
     @font-face {
       font-family: texto;
-      src: url(Gotham-Book.otf);
+      src: url(Gotham-Book.otf) ;
     }
     @font-face {
       font-family: titulo;
@@ -25,12 +25,13 @@
       background-image: url(1\ -\ Fundo.png);
       color: #fff;
       line-height: 1.6;
-      
+      background-size: cover;         /* A imagem de fundo irá cobrir toda a tela */
+      background-repeat: no-repeat;   /* Impede a repetição da imagem */
     }
 
     header {
       text-align: center;
-      margin: 100px;
+      padding: 10vh 5vw;
     }
 
     .hero {
@@ -56,6 +57,7 @@
     .hero-text {
       flex: 1;
       padding-left: 5vw;
+      padding-right: 5vw;
       color: white;
     }
 
@@ -85,6 +87,7 @@
       background: linear-gradient(to right, #00e6e6, #ffe600, #ff6666);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      
     }
 
     .btn {
@@ -121,6 +124,12 @@
     padding: 40px 5%;
     text-align: center;
   }
+  .highlight {
+    font-size: clamp(20px, 8vw, 28px); /* ajusta tamanho entre 20px e 28px */
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
+  }
 
   .hero-text, .hero-image {
     max-width: 100%;
@@ -145,6 +154,7 @@
 
   .hero-image {
     margin-top: 40px;
+    
   }
 }
 .nav ul {
@@ -155,8 +165,7 @@
   margin: 0;
 }
 
-
-/* Celulares (até 767px) */
+/* MOBILE (até 767px) */
 @media (max-width: 767px) {
   header {
     padding: 30px 5%;
@@ -197,7 +206,6 @@
       margin-bottom: 4rem;
     }
 
-    /* AQUI ESTÁ O AJUSTE PRINCIPAL */
     .cards-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -272,8 +280,6 @@
   object-fit: contain;
 }
 
-
-
 .card-number {
   position: absolute;
   top: -16px; /* Metade fora */
@@ -330,7 +336,7 @@
   font-weight: 800;
   font-size: 45px;
 }
-
+/* MOBILE (até 768px) */
 @media (max-width: 768px) {
   .historico {
     flex-direction: column;
@@ -346,21 +352,25 @@
     max-width: 100%;
     font-size: 25px;
     text-align: center;
+    margin-right: 0;
     
   }
-  
+  .historico .img2 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
   .historico .img2 img {
     width: 90%;
     height: auto;
     object-fit: contain;
     max-width: 400px;
-
   }
   .mentor {
     font-size: 26px;
   }
 }
-
+/* MOBILE (até 768px) */
 @media (max-width: 768px) {
   .card {
     padding: 25px 20px;
@@ -380,9 +390,9 @@
     height: 30px;
   }
   .curso {
-    font-size: 10vw !important; /* Aumenta o tamanho da fonte para dispositivos móveis */
-    margin: 30px; /* Ajusta a margem para dar mais espaço */
-    padding: 0 10px; /* Adiciona padding para evitar que o texto fique muito próximo das bordas */
+    font-size: 10vw !important; 
+    margin: 30px; 
+    padding: 0 10px; 
   }
 }
 
@@ -450,16 +460,25 @@
       gap: 0.5rem; /* espaço entre imagem e texto */
     }
 
-
     .full-centered-section {
-  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
   text-align: center;
-  margin-top: 380px;
+  padding: 40px 20px; /* <-- padding lateral */
+  box-sizing: border-box;
+  max-width: 100%;
 }
+
+.full-centered-section p,
+.full-centered-section h1,
+.full-centered-section h2 {
+  max-width: 700px; /* <-- limita largura do texto */
+  width: 100%;
+  margin: 0 auto;
+}
+
 
 
 .full-centered-section .content-wrapper {
@@ -526,7 +545,7 @@
   left: auto;
   right: 0;
 }
-
+/* MOBILE(até 768px) */
 @media (max-width: 768px) {
   .content-section > div {
     flex-direction: row;
@@ -584,7 +603,7 @@ span{
 }
 .titulo-bonus {
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: #FFD700;
   text-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
   text-align: center;
@@ -603,7 +622,6 @@ span{
 }
 
 .nav li {
-  /* Isso ajuda a garantir que os <li> não quebrem */
   white-space: nowrap;
 }
 html, body {
@@ -620,24 +638,33 @@ html, body {
   color: #f39c12;
   transition: 0.5s;
 }
+html {
+  scroll-behavior: smooth;
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;  /* Remove rolagem horizontal */
+  overflow-y: auto;    /* Garante rolagem vertical apenas */
+}
 
   </style>
 </head>
 <body>
-  <div class="nav"><!-- Colocar Css do site do Spotify -->
+  <!-- SEÇÃO MENU -->
+  <div class="nav">
     <ul>
-      <li><a href="">Inicio</a></li>
-      <li><a href="">Conteudos</a></li>
-      <li><a href="">Valores</a></li>
+      <li><a href="#inicio">In&iacute;cio</a></li>
+      <li><a href="#conteudos">Conte&uacute;dos</a></li>
+      <li><a href="#valores">Valores</a></li>
     </ul>
   </div>
-  
-    <header class="hero">
+  <!--SEÇÃO INICIO-->
+    <header class="hero" id="inicio">
       <div class="hero-text">
-        <h1>Domine a Edição de <br> Vídeos com Qualidade <br> <span class="highlight">Cinematográfica</span>.</h1>
-        <p class="cinema">Um curso prático no DaVinci Resolve para <br> quem quer liberdade criativa, <br> profissionalismo e oportunidade.</p>
-        <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">QUERO COMEÇAR AGORA!</a>  
-        <p class="subtitle">Acesso vitalício</p>
+        <h1>Domine a Edi&ccedil;&atilde;o de V&iacute;deos com Qualidade <span class="highlight">Cinematogr&aacute;fica</span>.</h1>
+        <p class="cinema">Um curso pr&aacute;tico no DaVinci Resolve para <br> quem quer liberdade criativa, <br> profissionalismo e oportunidade.</p>
+        <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">QUERO COME&Ccedil;AR AGORA!</a>  
+        <p class="subtitle"><em>Acesso vital&iacute;cio</em> </p>
       </div>
       <div class="hero-image">
         <img src="Site Vini/Vini Capa.png" alt="Edição de vídeo" width="1000px">
@@ -645,14 +672,14 @@ html, body {
     </header>
 <main>
 
-  <!-- SEÇÃO DE CARDS CENTRALIZADA -->
-  <section class="cards-section">
-    <h2 class="h2card">Veja o que você aprenderá:</h2>
+  <!-- SEÇÃO CARDS -->
+  <section class="cards-section" id="conteudos">
+    <h2 class="h2card">Veja o que você aprender&aacute;:</h2>
     <div class="cards">
       <div class="card">
         <div class="card-number">1</div>
-        <h3>INTRODUÇÃO</h3>
-        <p class="text-card">Como organizar seu  ambiente de trabalho,  entender a lógica do  DaVinci, resolver e  começar a editar com  confiança, mesmo  sendo iniciante.</p>
+        <h3>INTRODUC&Ccedil;&Atilde;O</h3>
+        <p class="text-card">Como organizar seu  ambiente de trabalho,  entender a l&oacute;gica do  DaVinci, resolver e  começar a editar com  confian&ccedil;a, mesmo  sendo iniciante.</p>
         <div class="card-img">
           <img src="Site Vini/Verificado.png" alt="">
         </div>
@@ -660,7 +687,7 @@ html, body {
       <div class="card">
         <div class="card-number">2</div>
         <h3>FUNDAMENTOS</h3>
-        <p class="text-card">Como cortar, organizar  e estruturar vídeos  com ritmo, intenção e  clareza - criando  sequências que  prendem a atenção do  público.</p>
+        <p class="text-card">Como cortar, organizar  e estruturar vi&iacute;deos  com ritmo, inten&ccedil;&atilde;o e  clareza - criando  sequ&ecirc;ncias que  prendem a aten&ccedil;&atilde;o do  p&uacute;blico.</p>
         <div class="card-img">
           <img src="Site Vini/Verificado.png" alt="">
         </div>
@@ -668,7 +695,7 @@ html, body {
       <div class="card">
         <div class="card-number">3</div>
         <h3>AJUSTES</h3>
-        <p class="text-card">Como melhorar o  áudio, aplicar  correções de cor,  ajustar o  enquadramento e  preparar seu vídeo  para ter uma aparência  mais profissional.</p>
+        <p class="text-card">Como melhorar o  &aacute;udio, aplicar  corre&ccedil;&otilde;es de cor,  ajustar o  enquadramento e  preparar seu v&iacute;deo  para ter uma apar&ecirc;ncia  mais profissional.</p>
         <div class="card-img">
           <img src="Site Vini/Verificado.png" alt="">
         </div>
@@ -676,14 +703,14 @@ html, body {
       <div class="card">
         <div class="card-number">4</div>
         <h3>ELEMENTOS</h3>
-        <p class="text-card">Como usar textos,  títulos, legendas  automáticas e efeitos  sonoros de forma  estratégica para deixar  seus vídeos mais  dinâmicos e  envolventes.</p>
+        <p class="text-card">Como usar textos,  t&iacute;tulos, legendas  autom&aacute;ticas e efeitos  sonoros de forma  estrat&eacute;gica para deixar  seus v&iacute;deos mais  din&acirc;micos e  envolventes.</p>
         <div class="card-img">
           <img src="Site Vini/Verificado.png" alt="">
         </div>
       </div>
       <div class="card">
         <div class="card-number">5</div>
-        <h3>FINALIZAÇÃO</h3>
+        <h3>FINALIZA&Ccedil;&Atilde;O</h3>
         <p class="text-card">Como eportar com  qualidade e leveza,  criar diferentes  formatos (Reels,  YouTube, Stories), e  organizar seus  arquivos como um  editor profissional.</p>
         <div class="card-img">
           <img src="Site Vini/Verificado.png" alt="">
@@ -692,14 +719,14 @@ html, body {
       <div class="card">
         <div class="card-number">6</div>
         <h3>HACKS</h3>
-        <p class="text-card">Dicas avançadas e  atalhos que  economizam horas na  edição, além de efeitos  simples com cara de  cinema que  surpreendem no  resultado final.</p>
+        <p class="text-card">Dicas avan&ccedil;adas e  atalhos que  economizam horas na  edi&ccedil;&atilde;o, al&eacute;m de efeitos  simples com cara de  cinema que  surpreendem no  resultado final.</p>
         <div class="card-img">
           <img src="Site Vini/Verificado.png" alt="">
         </div>
       </div>
     </div>
   </section>
-  
+  <!--SEÇÃO MENTOR-->
   <section class="historico">
     <div class="img2">
       <img src="Site Vini/Vini Celular.png" alt="">
@@ -707,63 +734,64 @@ html, body {
     <div class="textos">
       <h1 class="mentor"><strong>Seu mentor nessa jornada</strong></h1>
       <br>
-      <p>Sou o Vinícius Lazaretti e já estive exatamente onde você está agora: começando do zero, frustrado com programas complicados e sentindo que meus vídeos não tinham impacto.
+      <p>Sou o Vin&iacute;cius Lazaretti e j&aacute; estive exatamente onde voc&ecir; est&aacute; agora: come&ccedil;ando do zero, frustrado com programas complicados e sentindo que meus v&iacute;deos n&atilde;o tinham impacto.
         <br>
         <br>
-        O DaVinci Resolve mudou tudo pra mim — e agora, quero te mostrar como ele pode mudar tudo pra você também.
+        O DaVinci Resolve mudou tudo pra mim — e agora, quero te mostrar como ele pode mudar tudo pra você tamb&eacute;m.
         <br>
         <br>
-        Criei o SkyMaster FX pra ser mais do que um curso: é um atalho.
+        Criei o SkyMaster FX pra ser mais do que um curso: &eacute; um atalho.
         <br>
         <br>
-        Comigo como seu mentor, você vai aprender na prática, sem enrolação a editar com qualidade e a se destacar, transformando a edição em uma oportunidade real.
+        Comigo como seu mentor, você vai aprender na pr&aacute;tica, sem enrola&ccedil;&atilde;o a editar com qualidade e a se destacar, transformando a edi&ccedil;&atilde;o em uma oportunidade real.
       </p>
     </div>
   </section>
-  
+  <!--SEÇÃO PARA VOCÊ-->
   <section class="content-section">
-    <h2 class="curso">Esse curso é para você que...</h2>
+    <h2 class="curso">Esse curso &eacute; para voc&ecirc;que...</h2>
     <div>
       <img src="Site Vini/Verificado.png" alt="Check verde" class="check-icon">
-      <p>Quer aprender do zero e editar com qualidade profissional, mesmo sem experiência.</p>
+      <p>Quer aprender do zero e editar com qualidade profissional, mesmo sem experi&ecirc;ncia.</p>
     </div>
     <div>
       <img src="Site Vini/Verificado.png" alt="Check verde" class="check-icon">
-      <p>Está cansado de tutoriais soltos e quer um método direto, prático e sem enrolação.</p>
+      <p>Está cansado de tutoriais soltos e quer um m&eacute;todo direto, pr&aacute;tico e sem enrola&ccedil;&atilde;o.</p>
     </div>
     <div>
       <img src="Site Vini/Verificado.png" alt="Check verde" class="check-icon">
-      <p>Sonha em viver de edição, atrair clientes e construir uma carreira no audiovisual.</p>
+      <p>Sonha em viver de edi&ccedil;&atilde;o, atrair clientes e construir uma carreira no audiovisual.</p>
     </div>
   </section>
-  
-  <section class="full-centered-section">
+  <!--SEÇÃO VALORES-->
+  <section class="full-centered-section" id="valores">
     <div class="content-wrapper">
       <h2 class="acessocompleto">Acesso Completo de <span class="strikethrough">247,00</span></h2>
-      <h3 class="fim">POR APENAS</h3>
-      <p class="price">147,00</p>
+      <h2 class="fim">POR APENAS</h2>
+      <h2 class="price">147,00</h2>
       <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">Quero Acessar Agora</a>
+      <p class="subtitle"><em> Acesso vital&iacute;cio</em></p>
       <div class="sozinho">
         <p class="sozinho2">
-          Você terá acesso vitalício ao curso SkyMaster FX - DaVinci Resolve Essencial, com atualizações, suporte e bônus exclusivos da primeira turma.
+          Você terá acesso vital&iacute;cio ao curso SkyMaster FX - DaVinci Resolve Essencial, com atualiza&ccedil;&otilde;es, suporte e b&ocirc;nus exclusivos da primeira turma.
         </p>
       </div>
      
         
         <div class="bonus">
-          <h1 class="titulo-bonus">Bônus da pré-venda:</h1>
+          <h1 class="titulo-bonus">B&ocirc;nus da pr&eacute;-venda:</h1>
           <ul>
-            <li>
+            <li class="presente">
               <span class="icon"><img src="Site Vini/Presente.png" alt="Ícone 1"></span>
-              Sorteio de licença oficial do DaVinci Resolve Studio
+              Sorteio de licen&ccedil;a oficial do DaVinci Resolve Studio
             </li>
-            <li>
+            <li class="presente">
               <span class="icon"><img src="Site Vini/Presente.png" alt="Ícone 2"></span>
-              Acesso antecipado à comunidade de alunos
+              Acesso antecipado &agrave; comunidade de alunos
             </li>
-            <li>
+            <li class="presente">
               <span class="icon"><img src="Site Vini/Presente.png" alt="Ícone 3"></span>
-              Participação nos sorteios de pacotes criativos e mentoria
+              Participa&ccedil;&atilde;o nos sorteios de pacotes criativos e mentoria
             </li>
           </ul>
         </div>
@@ -776,7 +804,8 @@ html, body {
           </div> 
         </h2>
         
-        <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">Quero Começar Agora!</a>
+        <a class="btn" href="https://pay.kiwify.com.br/4FIXfrm">Quero Come&ccedil;ar Agora!</a>
+        <p class="subtitle"><em> Acesso vital&iacute;cio</em></p>
       </div>
     </div>
   </section>
